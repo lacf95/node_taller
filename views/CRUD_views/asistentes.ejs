@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="row">
+            <h1><%= titulo %></h1>
+            <hr>
+            <a href="/crud/nuevo/ %>"><h4>Registrar asistente</h4></a>
+            <hr>
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Ocupacion</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% asistentes.forEach(asistente => { %>
+                <tr class="fila">
+                  <td><%= asistente.id %></td>
+                  <td><%= asistente.nombre %></td>
+                  <td><%= asistente.apellido %></td>
+                  <td><%= asistente.ocupacion %></td>
+                  <td>
+                    <button type="button" class="btn- btn-link js-eliminar" data-id="<%= asistente.id %>">Eliminar</button>
+                    <a href="/crud/editar/<%= asistente.id %>">Editar</a>
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('.js-eliminar').on('click', function() {
+          var id = $(this).data('id');
+          var $row = $(this);
+          $.ajax({
+            url: 'eliminar/' + id,
+            type: 'DELETE',
+            dataType: 'JSON',
+            success: function(data) {
+              if (data.deleted)
+                $row.parents('.fila').remove();
+              else
+                alert('No se pudo eliminar');
+            },
+            error: function(err) {
+              alert('No se pudo eliminar');
+            }
+          })
+        });
+      });
+    </script>
+  </body>
+</html>

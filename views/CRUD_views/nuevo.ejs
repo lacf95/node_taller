@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="row">
+            <h1><%= titulo %></h1>
+          </div>
+          <form class="form-horizontal" action="/crud/guardar" method="POST">
+            <hr>
+            <div class="form-group">
+              <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" name="nombre" placeholder="Luis Adrián" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apellido" class="col-sm-2 control-label">Apellido</label>
+              <div class="col-sm-10">
+                  <input type="text" name="apellido" placeholder="Chávez Fregoso" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nombre" class="col-sm-2 control-label">Ocupación</label>
+              <div class="col-sm-10">
+                <input type="text" name="ocupacion" placeholder="Desarrollador" class="form-control">
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="col-sm-3 col-sm-offset-2">
+              <input type="submit" value="Registrarme" class="btn btn-primary btn-block">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

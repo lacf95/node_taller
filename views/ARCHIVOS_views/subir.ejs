@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="row">
+            <h1><%= titulo %></h1>
+          </div>
+          <form class="form-horizontal" action="/archivos/guardar" method="POST" enctype="multipart/form-data">
+            <hr>
+            <div class="form-group">
+              <label for="archivo" class="col-sm-2 control-label">Archivo</label>
+              <div class="col-sm-10">
+                <input type="file" name="archivo">
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="col-sm-3 col-sm-offset-2">
+              <input type="submit" value="Subir archivo" class="btn btn-primary btn-block">
+            </div>
+          </form>
+          <% if (cargado) { %>
+            <div class="bg-success" style="padding: 20px;">
+              Archivo cargado
+              <a href="/files/<%= nombreArchivo %>">Accede a tu archivo</a>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
